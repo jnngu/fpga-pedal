@@ -5,9 +5,16 @@ module Template
 (
   input  logic        clk, reset_n,
   input  logic [11:0] A,
-  input  logic        update,
+  input  logic        update, toggle_en,
   output logic [11:0] S
 );
+
+  logic enabled;
+  always_ff @(posedge clk, negedge reset_n)
+    if (~reset_n)
+      enabled <= 1'd0;
+    else if (toggle_en)
+      enabled <= ~enabled;
 
   logic [DEPTH-1:0][11:0] history;
 
@@ -31,5 +38,7 @@ module Template
         end
     end
   endgenerate
+
+  assign S = (enabled) ? [RESULT] : A;
 
 endmodule: Template

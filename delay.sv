@@ -4,16 +4,22 @@
   Delay module
     This module basically just holds onto a samble hisotry and adds it to
     the output some N samples later
-
  */
 module Delay
 #(parameter DEPTH=8)
 (
   input  logic        clk, reset_n,
   input  logic [11:0] A,
-  input  logic        update,
+  input  logic        update, toggle_en,
   output logic [11:0] S
 );
+
+  logic enabled;
+  always_ff @(posedge clk, negedge reset_n)
+    if (~reset_n)
+      enabled <= 1'd0;
+    else if (toggle_en)
+      enabled <= ~enabled;
 
   logic [DEPTH-1:0][11:0] history;
   logic            [11:0] delayed;
@@ -42,6 +48,6 @@ module Delay
   endgenerate
 
   // Combine line in + delayed
-  assign S = A + delayed;
+  assign S = (enabled) ? A + delayed : A;
 
 endmodule: Delay
