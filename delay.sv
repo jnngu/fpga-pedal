@@ -1,6 +1,12 @@
 `default_nettype none
 
-module Template
+/*
+  Delay module
+    This module basically just holds onto a samble hisotry and adds it to
+    the output some N samples later
+
+ */
+module Delay
 #(parameter DEPTH=8)
 (
   input  logic        clk, reset_n,
@@ -10,8 +16,11 @@ module Template
 );
 
   logic [DEPTH-1:0][11:0] history;
+  logic            [11:0] delayed;
 
-  // Create history shift registers
+  assign delayed = history[DEPTH-1];
+
+    // Create history shift registers
   genvar i;
   generate;
     for (i = 0; i < DEPTH; i++) begin
@@ -20,7 +29,7 @@ module Template
           if (~reset_n)
             history[i] <= 12'd0;
           else if (update)
-            history[i] <= [INSERT NEW VALUE];
+            history[i] <= (A >> 1);
         end
       end else begin
         always_ff @(posedge clk, negedge reset_n) begin
@@ -32,4 +41,7 @@ module Template
     end
   endgenerate
 
-endmodule: Template
+  // Combine line in + delayed
+  assign S = A + delayed;
+
+endmodule: Delay
