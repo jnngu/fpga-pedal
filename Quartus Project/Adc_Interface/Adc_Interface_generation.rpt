@@ -1,0 +1,30 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate "C:\Users\zzuo1\Documents\School\Build18 2022\Quartus Project\Adc_Interface.qsys" --block-symbol-file --output-directory="C:\Users\zzuo1\Documents\School\Build18 2022\Quartus Project\Adc_Interface" --family="Cyclone IV E" --part=EP4CE22F17C6
+Progress: Loading Quartus Project/Adc_Interface.qsys
+Progress: Reading input file
+Progress: Adding adc_mega_0 [altera_up_avalon_adc_mega 18.0]
+Progress: Parameterizing module adc_mega_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate "C:\Users\zzuo1\Documents\School\Build18 2022\Quartus Project\Adc_Interface.qsys" --synthesis=VERILOG --output-directory="C:\Users\zzuo1\Documents\School\Build18 2022\Quartus Project\Adc_Interface\synthesis" --family="Cyclone IV E" --part=EP4CE22F17C6
+Progress: Loading Quartus Project/Adc_Interface.qsys
+Progress: Reading input file
+Progress: Adding adc_mega_0 [altera_up_avalon_adc_mega 18.0]
+Progress: Parameterizing module adc_mega_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: Adc_Interface: Generating Adc_Interface "Adc_Interface" for QUARTUS_SYNTH
+Info: adc_mega_0: Starting Generation of ADC Controller for DE-series Board
+Info: adc_mega_0: C:/intelfpga_lite/20.1/ip/altera/university_program/input_output/altera_up_avalon_adc/hdl/altera_up_avalon_adv_adc.v C:/Users/zzuo1/AppData/Local/Temp/alt9024_6868796235183207995.dir/0002_sopcgen/Adc_Interface_adc_mega_0.v
+Info: adc_mega_0: "Adc_Interface" instantiated altera_up_avalon_adc_mega "adc_mega_0"
+Info: Adc_Interface: Done "Adc_Interface" with 2 modules, 3 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

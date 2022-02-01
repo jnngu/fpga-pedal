@@ -1,13 +1,21 @@
 `default_nettype none
+`default_nettype none
 
+/*
+  Convolution module
+    We can basically write any filtering algo in this module
+    Performs a convolution of A with Kernel
+ */
 module Convolve
 #(parameter DEPTH=8)
 (
-  input  logic        clk, reset_n,
-  input  logic [11:0] A, B,
-  input  logic        update, toggle_en,
-  output logic [11:0] S
+  input  logic                   clk, reset_n,
+  input  logic [11:0]            A,
+  input  logic [DEPTH-1:0][11:0] kernel,
+  input  logic                   update, toggle_en,
+  output logic [11:0]            S
 );
+
 
   logic enabled;
   always_ff @(posedge clk, negedge reset_n)
@@ -16,16 +24,12 @@ module Convolve
     else if (toggle_en)
       enabled <= ~enabled;
 
-  logic [DEPTH-1:0][11:0] history;
-  logic            [11:0] val_to_be_removed, new_entry;
+  logic [DEPTH-1:0][11:0] history, multiplies;
 
-  assign val_to_be_removed = history[DEPTH-1];
-  assign         new_entry = A * B; // TODO: Write better multiply
-
-  // Create history shift registers
   genvar i;
   generate;
     for (i = 0; i < DEPTH; i++) begin
+      // Create Registers
       if (i == 0) begin
         always_ff @(posedge clk, negedge reset_n) begin
           if (~reset_n)
@@ -55,7 +59,7 @@ module Convolve
     if (~reset_n)
       S <= 12'd0;
     else if (update)
-      S <= (enabled) ? (S + A_history[0] - val_to_be_removed) : S;
+      S <= (enabled) ? (conv_result) : A;
       /* This is technically a cycle late, but it shouldn't really
          make a big difference. I ***think*** this will be much better
          for the critical path, however.
