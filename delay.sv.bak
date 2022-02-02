@@ -28,8 +28,8 @@ module Delay
 
     // Create history shift registers
   genvar i;
-  generate
-    for (i = 0; i < DEPTH; i++) begin: history_registers
+  generate;
+    for (i = 0; i < DEPTH; i++) begin
       if (i == 0) begin
         always_ff @(posedge clk, negedge reset_n) begin
           if (~reset_n)
@@ -40,11 +40,10 @@ module Delay
       end else begin
         always_ff @(posedge clk, negedge reset_n) begin
           if (~reset_n)
-            history[i] <= 12'd0;
+            A_history[i] <= 12'd0;
           else if (update)
             history[i] <= history[i-1];
         end
-      end
     end
   endgenerate
 

@@ -10,7 +10,7 @@ module Distortion_Hard_Clip
 (
   input  logic        clk, reset_n,
   input  logic [11:0] A, gain_factor,
-  input  logic        update, toggle_en,
+  input  logic        update,
   output logic [11:0] S
 );
 
@@ -40,7 +40,7 @@ module Distortion_Soft_Clip
 #(parameter LIMIT_1=12'h800, LIMIT_2=12'h880, LIMIT_3=12'h888)
 (
   input  logic        clk, reset_n,
-  input  logic [11:0] A, gain_factor, toggle_en,
+  input  logic [11:0] A, gain_factor,
   input  logic        update,
   output logic [11:0] S
 );

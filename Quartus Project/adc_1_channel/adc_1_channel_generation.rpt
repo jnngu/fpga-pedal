@@ -1,0 +1,30 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate "C:\Users\zzuo1\Documents\School\Build18 2022\fpga-pedal\Quartus Project\adc_1_channel.qsys" --block-symbol-file --output-directory="C:\Users\zzuo1\Documents\School\Build18 2022\fpga-pedal\Quartus Project\adc_1_channel" --family="Cyclone IV E" --part=EP4CE22F17C6
+Progress: Loading Quartus Project/adc_1_channel.qsys
+Progress: Reading input file
+Progress: Adding adc_mega_0 [altera_up_avalon_adc_mega 18.0]
+Progress: Parameterizing module adc_mega_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate "C:\Users\zzuo1\Documents\School\Build18 2022\fpga-pedal\Quartus Project\adc_1_channel.qsys" --synthesis=VERILOG --output-directory="C:\Users\zzuo1\Documents\School\Build18 2022\fpga-pedal\Quartus Project\adc_1_channel\synthesis" --family="Cyclone IV E" --part=EP4CE22F17C6
+Progress: Loading Quartus Project/adc_1_channel.qsys
+Progress: Reading input file
+Progress: Adding adc_mega_0 [altera_up_avalon_adc_mega 18.0]
+Progress: Parameterizing module adc_mega_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: adc_1_channel: Generating adc_1_channel "adc_1_channel" for QUARTUS_SYNTH
+Info: adc_mega_0: Starting Generation of ADC Controller for DE-series Board
+Info: adc_mega_0: C:/intelfpga_lite/20.1/ip/altera/university_program/input_output/altera_up_avalon_adc/hdl/altera_up_avalon_adv_adc.v C:/Users/zzuo1/AppData/Local/Temp/alt9025_3933272603622194175.dir/0002_sopcgen/adc_1_channel_adc_mega_0.v
+Info: adc_mega_0: "adc_1_channel" instantiated altera_up_avalon_adc_mega "adc_mega_0"
+Info: adc_1_channel: Done "adc_1_channel" with 2 modules, 3 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

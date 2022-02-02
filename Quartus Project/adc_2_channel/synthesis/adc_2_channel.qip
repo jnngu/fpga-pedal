@@ -1,0 +1,45 @@
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_TOOL_NAME "Qsys"
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_TOOL_VERSION "20.1"
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -library "adc_2_channel" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../adc_2_channel.sopcinfo"]
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name SLD_INFO "QSYS_NAME adc_2_channel HAS_SOPCINFO 1 GENERATION_ID 1643767960"
+set_global_assignment -library "adc_2_channel" -name MISC_FILE [file join $::quartus(qip_path) "../adc_2_channel.cmp"]
+set_global_assignment -library "adc_2_channel" -name SLD_FILE [file join $::quartus(qip_path) "adc_2_channel.debuginfo"]
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_TARGETED_DEVICE_FAMILY "Cyclone IV E"
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone IV E}"
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "adc_2_channel" -name MISC_FILE [file join $::quartus(qip_path) "../../adc_2_channel.qsys"]
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_COMPONENT_NAME "YWRjXzJfY2hhbm5lbA=="
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_COMPONENT_DISPLAY_NAME "YWRjXzJfY2hhbm5lbA=="
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY0Mzc2Nzk2MA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBJViBF::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::RVA0Q0UyMkYxN0M2::QXV0byBERVZJQ0U="
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Ng==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfRE9NQUlO::LTE=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "adc_2_channel" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfUkVTRVRfRE9NQUlO::LTE=::QXV0byBSRVNFVF9ET01BSU4="
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_NAME "YWRjXzJfY2hhbm5lbF9hZGNfbWVnYV8w"
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_DISPLAY_NAME "QURDIENvbnRyb2xsZXIgZm9yIERFLXNlcmllcyBCb2FyZHM="
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_AUTHOR "SW50ZWwgRlBHQSBVbml2ZXJzaXR5IFByb2dyYW0="
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_VERSION "MTguMA=="
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_DESCRIPTION "QURDIENvbnRyb2xsZXIgZm9yIEFsdGVyYSBERS1zZXJpZXMgQm9hcmRz"
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "Ym9hcmQ=::REUwLU5hbm8=::REUtU2VyaWVzIEJvYXJk"
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "c2Nsa19mcmVx::My4y::QURDIENsb2NrIEZyZXF1ZW5jeSAoTUh6KQ=="
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "dHNjbGs=::MTY=::QURDX1NDTEsgU2NhbGluZyBGYWN0b3I="
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "bnVtY2hf::Mg==::TnVtYmVyIG9mIENoYW5uZWxzIFVzZWQ="
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "bnVtY2g=::Mg==::TnVtYmVyIG9mIENoYW5uZWxzIFVzZWQgLSAx"
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "bWF4MTBwbGxtdWx0Ynk=::MQ==::TUFYMTAgQURDIFBsbCBtdWx0aXBseSBieSBmYWN0b3I="
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "bWF4MTBwbGxkaXZieQ==::MQ==::TUFYMTAgQURDIFBsbCBkaXZpZGUgYnkgZmFjdG9y"
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "c3lzX2Nsa19mcmVx::NTA=::U3lzdGVtIENsb2NrIEZyZXF1ZW5jeSAoTUh6KQ=="
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBJViBF::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "adc_2_channel_adc_mega_0" -library "adc_2_channel" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MA==::QXV0byBDTE9DS19SQVRF"
+
+set_global_assignment -library "adc_2_channel" -name VERILOG_FILE [file join $::quartus(qip_path) "adc_2_channel.v"]
+set_global_assignment -library "adc_2_channel" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_up_avalon_adv_adc.v"]
+set_global_assignment -library "adc_2_channel" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/adc_2_channel_adc_mega_0.v"]
