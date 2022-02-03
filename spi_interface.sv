@@ -7,12 +7,13 @@
 module SPI_interface (
     input logic clk, reset_b, dout,
     input logic[3:0] ADD,
-    output logic din, sclk, cs_b
+    output logic din, sclk, cs_b,
+    output logic[11:0] data
 );
 
     logic [3:0] counter;
 
-    always_ff @(negedge clk, negedge reset_b) begin
+    always_ff @(posedge clk, negedge reset_b) begin
         if (~reset_b)
             counter <= 4'd0;
         else
@@ -21,14 +22,23 @@ module SPI_interface (
 
     assign sclk = cs_b? 1: clk;
 
+    //might be off by one
     always_comb begin
         case (counter)
-            4'd3: din = ADD[2];
-            4'd4: din = ADD[1];
-            4'd5: din = ADD[0];
+            4'd2: din = ADD[2];
+            4'd3: din = ADD[1];
+            4'd4: din = ADD[0];
             default: din = 1'd0;
         endcase
     end
 
+    always_ff @(posedge clk, negedge reset_b) begin
+        if (~reset_b)
+            data <= 11'b0;
+        else begin
+            data[counter] <= dout;
+        end
+
+    end
 
 endmodule: SPI_interface
