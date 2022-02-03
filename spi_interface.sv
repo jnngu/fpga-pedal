@@ -36,7 +36,8 @@ module SPI_interface (
         if (~reset_b)
             data <= 11'b0;
         else begin
-            data[counter] <= dout;
+            if (counter >= 4'd4)
+                data[counter-4'd4] <= dout;
         end
 
     end
