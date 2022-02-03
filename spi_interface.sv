@@ -52,3 +52,70 @@ module SPI_interface (
     end
 
 endmodule: SPI_interface
+
+
+module IPS_interface (
+    input logic [11:0] data,
+    input logic clk, reset_b,
+    output logic cs_b, sdi, sclk
+);
+
+    logic [3:0] counter;
+
+    always_ff @(posedge clk, negedge reset_b) begin
+        if (~reset_b) begin
+          counter <= 4'd0;
+          cs_b <= 1'b1;
+        end 
+        else begin
+          if (counter <= 4'd12) begin
+            counter <= counter + 4'd1;
+            
+          end
+          else begin
+            counter <= 4'd0;
+        
+          end
+
+          if (counter == 4'd12)
+            cs_b <= 1'b1;
+          else
+            cs_b <= 1'b0;
+        end
+    end
+    assign sclk = cs_b ? 1'b0: clk;
+
+    always_ff @(posedge clk, negedge reset_b) begin
+        if (~reset_b)
+            sdi <= 1'b0;
+        else if (counter >= 4'd1 && counter <= 4'd12) begin
+            sdi <= data[12'd12 - counter];
+        end
+    end
+
+endmodule: IPS_interface
+
+
+module tb();
+
+    logic [11:0] data;
+    logic clk, reset_b, cs_b, sdi, sclk;
+    IPS_interface inter(.data, .clk, .reset_b, .cs_b, .sdi, .sclk);
+
+    initial begin 
+        clk = 0;
+        forever #10 clk = ~clk;
+    end
+
+    initial begin
+        reset_b = 0;
+        reset_b <= 1;
+    end
+
+    initial begin
+        data = 12'b011100001110;
+        repeat(20)
+            @(posedge clk);
+        $finish;
+    end
+endmodule:tb
