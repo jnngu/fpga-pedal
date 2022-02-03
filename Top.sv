@@ -30,7 +30,7 @@ SPI_interface adc_spi
   always_ff @(posedge clk, negedge reset_n) begin
         if (~reset_n)
         adc_sampler <= 32'd0;
-      else if (adc_sampler > 32'd1500002)
+      else if (adc_sampler > 32'd10000002)
         adc_sampler <= 32'd0;
       else
         adc_sampler <= adc_sampler + 32'd1;
@@ -39,11 +39,11 @@ SPI_interface adc_spi
   always_ff @(posedge clk, negedge reset_n) begin
         if (~reset_n)
             adc_data_reg <= 11'b0;
-      else if (adc_sampler == 32'd1500000)
+      else if (adc_sampler == 32'd10000000)
         adc_data_reg <= adc_data;
   end
 
-  assign LED = adc_data_reg[11:4];
+  assign LED = adc_data[11:4];
   // genvar i;
   // generate
   //   for (i = 0; i < 8; i++) begin: JASSSSOOOOONNNNN
