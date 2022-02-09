@@ -56,45 +56,100 @@ endmodule: SPI_interface
 
 module IPS_interface (
     input logic [11:0] data,
-    input logic clk, reset_b,
+    input logic clk, reset_b, valid,
     output logic cs_b, sdi, sclk
 );
 
     logic [3:0] counter;
+    logic [15:0] shift_reg;
+
+    enum logic {INIT, TRANSMIT} cs, ns;
+
 
     always_ff @(posedge clk, negedge reset_b) begin
+      if (~reset_b)
+        cs <= INIT;
+      else
+        cs <= ns;
+
+    end
+
+    always_comb begin
+      case (cs)
+        INIT: begin
+        if (!valid) begin
+          ns = INIT;
+        end
+        else begin
+          ns = TRANSMIT;
+        end
+        end
+        TRANSMIT: begin
+        if (counter == 4'd15) begin
+          ns = INIT;
+        end
+        else begin
+          ns = TRANSMIT;
+        end
+        end
+      endcase
+    end
+	 
+	 assign sclk = clk;
+
+    always_comb begin
+      cs_b = 1'b0;
+      // sclk = 1'b1;
+      sdi = 1'b0;
+      case (cs)
+        INIT: begin
+          cs_b = 1'b1;
+          // sclk = 1'b0;
+          sdi = 1'b0;
+        end
+        TRANSMIT: begin
+          cs_b = 1'b0;
+          // sclk = clk;
+          sdi = shift_reg[15];
+        end
+
+      endcase
+    end
+
+    always_ff @(negedge clk, negedge reset_b) begin
         if (~reset_b) begin
           counter <= 4'd0;
-          cs_b <= 1'b1;
-        end 
-        else begin
-          if (counter <= 4'd12) begin
-            counter <= counter + 4'd1;
-            
-          end
-          else begin
-            counter <= 4'd0;
-        
-          end
-
-          if (counter == 4'd12)
-            cs_b <= 1'b1;
-          else
-            cs_b <= 1'b0;
-        end
+          //cs_b <= 1'b1;
+        end else begin
+          counter <= counter + 4'd1;
+          //cs_b <= 1'b0;
+      end
     end
-    assign sclk = cs_b ? 1'b0: clk;
+
+    //assign cs_b = (counter > 5'd15) ? 1'd1 : 1'd0;
 
     always_ff @(posedge clk, negedge reset_b) begin
-        if (~reset_b)
-            sdi <= 1'b0;
-        else if (counter >= 4'd1 && counter <= 4'd12) begin
-            sdi <= data[12'd12 - counter];
-        end
+      if (~reset_b) begin
+        shift_reg <= 16'd0;
+      end else begin
+        case (cs)
+          INIT: begin
+            if(valid)
+              shift_reg <= {4'b0011, data};
+          end
+          TRANSMIT: shift_reg <= shift_reg << 1;
+        endcase
+      end
     end
+
+
+    //assign sclk = cs_b ? 1'b1 : clk;
+
+
 
 endmodule: IPS_interface
 
+/*
 
 module tb();
 
@@ -102,7 +157,7 @@ module tb();
     logic clk, reset_b, cs_b, sdi, sclk;
     IPS_interface inter(.data, .clk, .reset_b, .cs_b, .sdi, .sclk);
 
-    initial begin 
+    initial begin
         clk = 0;
         forever #10 clk = ~clk;
     end
@@ -119,3 +174,4 @@ module tb();
         $finish;
     end
 endmodule:tb
+*/
