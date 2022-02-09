@@ -63,7 +63,7 @@ module IPS_interface (
     logic [3:0] counter;
     logic [15:0] shift_reg;
 
-    enum logic {INIT, TRANSMIT} cs, ns;
+    enum logic [1:0] {INIT, TRANSMIT, FINAL} cs, ns;
 
 
     always_ff @(posedge clk, negedge reset_b) begin
@@ -86,12 +86,13 @@ module IPS_interface (
         end
         TRANSMIT: begin
         if (counter == 4'd15) begin
-          ns = INIT;
+          ns = FINAL;
         end
         else begin
           ns = TRANSMIT;
         end
         end
+        FINAL: ns = INIT;
       endcase
     end
 
@@ -108,9 +109,17 @@ module IPS_interface (
           sdi = 1'b0;
         end
         TRANSMIT: begin
-          cs_b = 1'b0;
+          if (counter >= 'd1)
+            cs_b = 1'b0;
+          else
+            cs_b = 1'b1;
           sclk = clk;
           sdi = shift_reg[15];
+        end
+        FINAL: begin
+          sclk = clk;
+          sdi = shift_reg[15];
+          cs_b = ~sclk;
         end
 
       endcase
@@ -173,7 +182,7 @@ module tb();
     end
 
     initial begin
-        data = 12'b011100001110;
+        data = 12'b111111111110;
         valid = 1'b1;
         repeat(20)
             @(posedge clk);
