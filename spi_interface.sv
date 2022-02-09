@@ -94,28 +94,28 @@ module IPS_interface (
         end
       endcase
     end
-	 
-	 assign sclk = clk;
+
+	 //assign sclk = clk;
 
     always_comb begin
       cs_b = 1'b0;
-      // sclk = 1'b1;
+      sclk = 1'b1;
       sdi = 1'b0;
       case (cs)
         INIT: begin
           cs_b = 1'b1;
-          // sclk = 1'b0;
+          sclk = 1'b0;
           sdi = 1'b0;
         end
         TRANSMIT: begin
           cs_b = 1'b0;
-          // sclk = clk;
+          sclk = clk;
           sdi = shift_reg[15];
         end
 
       endcase
     end
-
+    /*
     always_ff @(negedge clk, negedge reset_b) begin
         if (~reset_b) begin
           counter <= 4'd0;
@@ -125,19 +125,24 @@ module IPS_interface (
           //cs_b <= 1'b0;
       end
     end
-
+    */
     //assign cs_b = (counter > 5'd15) ? 1'd1 : 1'd0;
 
     always_ff @(posedge clk, negedge reset_b) begin
       if (~reset_b) begin
         shift_reg <= 16'd0;
+        counter <= 'b0;
       end else begin
         case (cs)
           INIT: begin
+            counter <= 'b0;
             if(valid)
               shift_reg <= {4'b0011, data};
           end
-          TRANSMIT: shift_reg <= shift_reg << 1;
+          TRANSMIT: begin
+            shift_reg <= shift_reg << 1;
+            counter <= counter + 1'b1;
+          end
         endcase
       end
     end
@@ -149,13 +154,13 @@ module IPS_interface (
 
 endmodule: IPS_interface
 
-/*
+
 
 module tb();
 
     logic [11:0] data;
-    logic clk, reset_b, cs_b, sdi, sclk;
-    IPS_interface inter(.data, .clk, .reset_b, .cs_b, .sdi, .sclk);
+    logic clk, reset_b, cs_b, sdi, sclk, valid;
+    IPS_interface inter(.data, .clk, .reset_b, .cs_b, .sdi, .sclk, .valid);
 
     initial begin
         clk = 0;
@@ -169,9 +174,10 @@ module tb();
 
     initial begin
         data = 12'b011100001110;
+        valid = 1'b1;
         repeat(20)
             @(posedge clk);
         $finish;
     end
 endmodule:tb
-*/
+
