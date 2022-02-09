@@ -1,5 +1,5 @@
 Flow report for Top
-Wed Feb 09 16:14:02 2022
+Wed Feb 09 17:54:03 2022
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -41,17 +41,17 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Wed Feb 09 16:13:59 2022       ;
+; Flow Status                        ; Successful - Wed Feb 09 17:54:00 2022       ;
 ; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                      ; Top                                         ;
 ; Top-level Entity Name              ; Top                                         ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE22F17C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 1,076 / 22,320 ( 5 % )                      ;
-;     Total combinational functions  ; 651 / 22,320 ( 3 % )                        ;
-;     Dedicated logic registers      ; 866 / 22,320 ( 4 % )                        ;
-; Total registers                    ; 866                                         ;
+; Total logic elements               ; 1,055 / 22,320 ( 5 % )                      ;
+;     Total combinational functions  ; 631 / 22,320 ( 3 % )                        ;
+;     Dedicated logic registers      ; 848 / 22,320 ( 4 % )                        ;
+; Total registers                    ; 848                                         ;
 ; Total pins                         ; 17 / 154 ( 11 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 122,880 / 608,256 ( 20 % )                  ;
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/09/2022 16:13:27 ;
+; Start date & time ; 02/09/2022 17:53:29 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Top                 ;
 +-------------------+---------------------+
@@ -76,12 +76,14 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+------------------+
 ; Assignment Name                     ; Value                                                                                                                                   ; Default Value ; Entity Name ; Section Id       ;
 +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+------------------+
-; COMPILER_SIGNATURE_ID               ; 10995770589209.164444120701940                                                                                                          ; --            ; --          ; --               ;
+; COMPILER_SIGNATURE_ID               ; 10995770589209.164444720951368                                                                                                          ; --            ; --          ; --               ;
 ; ENABLE_SIGNALTAP                    ; On                                                                                                                                      ; --            ; --          ; --               ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                                                                                                      ; --            ; --          ; --               ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                                                                                                       ; --            ; --          ; --               ;
 ; MISC_FILE                           ; pll_adc_bb.v                                                                                                                            ; --            ; --          ; --               ;
 ; MISC_FILE                           ; pll_adc.ppf                                                                                                                             ; --            ; --          ; --               ;
+; MISC_FILE                           ; pll_dac_bb.v                                                                                                                            ; --            ; --          ; --               ;
+; MISC_FILE                           ; pll_dac.ppf                                                                                                                             ; --            ; --          ; --               ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                                                                                                                    ; --            ; --          ; --               ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family)                                                                                                  ; --            ; --          ; --               ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                                                                                                  ; --            ; --          ; --               ;
@@ -127,11 +129,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:21     ; 1.0                     ; 4837 MB             ; 00:00:38                           ;
-; Fitter               ; 00:00:06     ; 1.1                     ; 5660 MB             ; 00:00:08                           ;
-; Assembler            ; 00:00:02     ; 1.0                     ; 4685 MB             ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:02     ; 1.1                     ; 4821 MB             ; 00:00:02                           ;
-; Total                ; 00:00:31     ; --                      ; --                  ; 00:00:50                           ;
+; Analysis & Synthesis ; 00:00:21     ; 1.0                     ; 4839 MB             ; 00:00:39                           ;
+; Fitter               ; 00:00:06     ; 1.1                     ; 5666 MB             ; 00:00:07                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 4685 MB             ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:02     ; 1.1                     ; 4823 MB             ; 00:00:02                           ;
+; Total                ; 00:00:30     ; --                      ; --                  ; 00:00:49                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
