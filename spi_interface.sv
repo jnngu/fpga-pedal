@@ -25,7 +25,7 @@ module SPI_interface (
 
     //assign cs_b = (counter > 5'd15) ? 1'd1 : 1'd0;
 
-
+	 assign valid = counter == 4'd15;
 
     assign sclk = cs_b ? 1'b1 : clk;
 
@@ -109,10 +109,11 @@ module IPS_interface (
           sdi = 1'b0;
         end
         TRANSMIT: begin
-          if (counter >= 'd1)
-            cs_b = 1'b0;
-          else
-            cs_b = 1'b1;
+			 cs_b = 1'b0;
+//          if (counter >= 'd1)
+//            cs_b = 1'b0;
+//          else
+//            cs_b = 1'b1;
           sclk = clk;
           sdi = shift_reg[15];
         end

@@ -1,0 +1,6 @@
+
+State Machine - |Top|IPS_interface:adc_ips|cs
+Name cs.INIT cs.FINAL cs.TRANSMIT 
+cs.INIT 0 0 0 
+cs.TRANSMIT 1 0 1 
+cs.FINAL 1 1 0 

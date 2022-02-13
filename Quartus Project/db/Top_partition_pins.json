@@ -16,6 +16,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "dac_sclk",
+					"strict" : false
+				},
+				{
 					"name" : "dac_cs_b",
 					"strict" : false
 				},
@@ -24,35 +28,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "LED[1]",
-					"strict" : false
-				},
-				{
-					"name" : "LED[2]",
-					"strict" : false
-				},
-				{
-					"name" : "LED[3]",
-					"strict" : false
-				},
-				{
-					"name" : "LED[4]",
-					"strict" : false
-				},
-				{
-					"name" : "LED[5]",
-					"strict" : false
-				},
-				{
-					"name" : "LED[6]",
-					"strict" : false
-				},
-				{
-					"name" : "LED[7]",
-					"strict" : false
-				},
-				{
 					"name" : "reset_n",
+					"strict" : false
+				},
+				{
+					"name" : "hc_toggle",
 					"strict" : false
 				},
 				{

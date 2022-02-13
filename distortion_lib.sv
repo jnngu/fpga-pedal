@@ -8,22 +8,34 @@
 module Distortion_Hard_Clip
 #(parameter LIMIT=12'h800)
 (
-  input  logic        clk, reset_n,
+  input  logic        clk, reset_n, valid_in,
   input  logic [11:0] A, gain_factor,
   input  logic        update, toggle_en,
+  output logic valid_out,
   output logic [11:0] S
 );
 
   logic enabled;
-  always_ff @(posedge clk, negedge reset_n)
+  always_ff @(posedge clk, negedge reset_n) begin
     if (~reset_n)
       enabled <= 1'd0;
     else if (toggle_en)
       enabled <= ~enabled;
+	 valid_out <= valid_in;
+	end
 
-  logic [11:0] gained, clipped;
-  assign gained = A << gain_factor;
-  assign clipped = (gained > LIMIT) ? LIMIT : gained;
+
+  logic [23:0] gained;
+  logic [11:0] clipped;
+  assign gained = {12'b0,A} << gain_factor;
+  always_comb begin
+	if (|gained[23:12]) begin
+		clipped = 12'hfff;
+	end
+	else
+		clipped = (gained[11:0] > LIMIT) ? 12'hfff : gained[11:0];
+  end
+
 
   assign S = (enabled) ? clipped : A;
 
@@ -69,3 +81,37 @@ module Distortion_Soft_Clip
   assign S = (enabled) ? gained : A;
 
 endmodule: Distortion_Soft_Clip
+
+
+module reverb
+    (input logic clk, reset_n,
+     input logic toggle_en, update,
+     input logic [2:0] sh_amt,
+     input logic [11:0] in, 
+     output logic [11:0] out,
+	  output logic valid_out
+    );
+
+	 logic [512:0][11:0] history;
+	 genvar i;
+	 generate
+		for (i = 0; i < 128; i++) begin: history_shit
+			if (i == 0)
+				always_ff @(posedge clk)
+					history[0] <= out;
+			else
+				always_ff @(posedge clk)
+					history[i] <= history[i-1]; //  - 12'd12;
+			
+		end
+	 endgenerate
+	 
+	 
+	 always_ff @(posedge clk) begin
+        if (update && toggle_en)
+            out <= in + history[512]; // + history[256] + history[32];
+        else
+            out <= in;
+		  valid_out <= update;
+    end
+endmodule: reverb
